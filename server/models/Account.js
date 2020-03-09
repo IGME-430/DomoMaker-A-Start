@@ -1,4 +1,3 @@
-const models = require('../models');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 
@@ -8,22 +7,6 @@ let AccountModel = {};
 const iterations = 10000;
 const saltLength = 64;
 const keyLength = 64;
-const Account = models.Account;
-
-const loginPage = (req, res) => {
-  res.render('login');
-};
-
-const signupPage = (req, res) => {
-  res.render('signup');
-};
-
-const logout = (req, res) => {
-  res.redirect('/');
-};
-
-const login = (request, response) => {};
-const signup = (request, response) => {};
 
 const AccountSchema = new mongoose.Schema({
   username: {
@@ -100,10 +83,5 @@ AccountSchema.statics.authenticate = (username, password, callback) => {
 
 AccountModel = mongoose.model('Account', AccountSchema);
 
-module.exports.loginPage = loginPage;
-module.exports.login = login;
-module.exports.logout = logout;
-module.exports.signupPage = signupPage;
-module.exports.signup = signup;
 module.exports.AccountModel = AccountModel;
 module.exports.AccountSchema = AccountSchema;
